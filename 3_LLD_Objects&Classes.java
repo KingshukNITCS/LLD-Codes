@@ -54,10 +54,9 @@ public class Dog {
 
     {
 
-        Dog tuffy
-            = new Dog("wuffy", "papillon", 5, "white");
+        Dog wuffy = new Dog("wuffy", "papillon", 5, "white");
 
-        System.out.println(tuffy.toString());
+        System.out.println(wuffy.toString());
     }
   }
 
