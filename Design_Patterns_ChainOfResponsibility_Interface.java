@@ -125,4 +125,11 @@ class Email {
     }
   }
 
+/*
 
+Output 
+
+This is a sales-related email: Buy our product!
+This is a general inquiry: I have a question.
+
+*/
