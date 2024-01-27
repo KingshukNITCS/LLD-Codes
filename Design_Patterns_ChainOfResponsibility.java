@@ -1,4 +1,4 @@
-// Step 1: Define the Handler interface
+// Step 1: Define the Handler abstract class 
 abstract class EmailProcessor {
     private EmailProcessor nextProcessor;
 
