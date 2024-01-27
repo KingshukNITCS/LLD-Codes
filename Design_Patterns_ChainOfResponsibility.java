@@ -1,6 +1,3 @@
-
-import java.io.*;
-
 // Step 1: Define the Handler interface
 abstract class EmailProcessor {
     private EmailProcessor nextProcessor;
@@ -100,3 +97,11 @@ class Email {
         return content.contains("spam");
     }
 }
+
+/*
+
+Output
+This is a sales-related email: Buy our product!
+This is a general inquiry: I have a question.
+
+*/
