@@ -67,6 +67,19 @@ class DenominationHandler implements WithdrawalHandler {
     }
 }
 
+// NullHandler class to handle cases when no handler can fulfill the withdrawal request
+class NullHandler implements WithdrawalHandler {
+    @Override
+    public void setNextHandler(WithdrawalHandler nextHandler) {
+        // No next handler for the null handler
+    }
+
+    @Override
+    public void handleWithdrawal(int amount) {
+        System.out.println("Unable to dispense the amount. Please enter a valid withdrawal amount.");
+    }
+}
+
 // ATM class with Chain of Responsibility pattern
 class ATM {
     private WithdrawalHandler withdrawalHandler;
@@ -82,6 +95,7 @@ class ATM {
         note1000Handler.setNextHandler(note500Handler);
         note500Handler.setNextHandler(note100Handler);
         note100Handler.setNextHandler(note50Handler);
+        note50Handler.setNextHandler(new NullHandler()); // Add the null handler as the last handler in the chain
 
         withdrawalHandler = note1000Handler;
     }
@@ -96,14 +110,53 @@ class ATM {
 class Main {
     public static void main(String[] args) {
         ATM atm = new ATM();
-        atm.withdrawAmount(6500);
+        atm.withdrawAmount(6540);
+        atm.withdrawAmount(7777); // Testing null handler for an amount that cannot be fulfilled
     }
 }
 
+
+
 /*
 
-java -cp /tmp/cDGn3NkkEY Main
+java -cp /tmp/2EZA5OHpVy Main
 
-Withdrawal Request: 6500Dispensing 6 x 1000Dispensing 1 x 500
+Withdrawal Request: 6540
+
+Dispensing 6 x 1000
+
+Dispensing 1 x 500
+
+Unable to dispense the amount. Please enter a valid withdrawal amount.
+
+Withdrawal Request: 7777
+
+Insufficient notes of denomination 1000. Trying next...Dispensing 15 x 500
+
+Dispensing 2 x 100
+
+Dispensing 1 x 50
+
+Unable to dispense the amount. Please enter a valid withdrawal amount.
+
+________
+
+To handle the specific condition where only certain denominations (1000, 500, 100, 50) are available for withdrawal and still allow the withdrawal of an amount like 6500, we can use the "Chain of Responsibility" design pattern. This pattern allows multiple objects to handle a request sequentially until one of them successfully handles it.
+
+Here's an updated version of the ATM machine LLD implementation using the Chain of Responsibility pattern to handle withdrawal requests with specific denominations.
+
+In this implementation, we introduce the `WithdrawalHandler` interface and the `DenominationHandler` class. Each `DenominationHandler` represents a specific denomination and handles withdrawal requests for that denomination. The `ATM` class maintains a chain of `WithdrawalHandler` objects, with each handler attempting to handle the withdrawal request. If a handler doesn't have sufficient notes of its denomination, it passes the request to the next handler in the chain until the request is successfully handled or there are no more handlers left.
+
+When you run the example, the output will be:
+
+```
+Withdrawal Request: 6500
+Dispensing 6 x 1000
+Dispensing 1 x 500
+```
+
+The Chain of Responsibility pattern allows the ATM to handle withdrawal requests for amounts that can be composed using the available denominations. If a denomination runs out of notes or cannot handle the full amount, it passes the request to the next handler until the request is fully handled or deemed impossible.
+
+Note: This implementation assumes that the ATM has a fixed number of notes available for each denomination and maintains a count of the available notes. The `notesCount` map in the `DenominationHandler` class represents the available count of each denomination.
 
 */
