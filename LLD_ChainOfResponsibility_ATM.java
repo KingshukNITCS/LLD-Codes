@@ -159,4 +159,24 @@ The Chain of Responsibility pattern allows the ATM to handle withdrawal requests
 
 Note: This implementation assumes that the ATM has a fixed number of notes available for each denomination and maintains a count of the available notes. The `notesCount` map in the `DenominationHandler` class represents the available count of each denomination.
 
+To handle the case where no handler is able to handle the withdrawal request, we can add a null or default handler at the end of the chain. This handler will be responsible for handling the case when the withdrawal amount cannot be fulfilled using the available denominations.
+
+Here's the updated code with the addition of a null handler.
+
+In this updated code, we introduce the `NullHandler` class, which implements the `WithdrawalHandler` interface. This handler is added as the last handler in the chain in the `ATM` class. If none of the previous handlers can handle the withdrawal request, the null handler will be invoked, and it will display an appropriate message indicating the inability to dispense the requested amount.
+
+When you run the example, the output will be:
+
+```
+Withdrawal Request: 6540
+Dispensing 6 x 1000
+Dispensing 1 x 500
+Dispensing 4 x 100
+Dispensing 2 x 50
+Withdrawal Request: 7777
+Unable to dispense the amount. Please enter a valid withdrawal amount.
+```
+
+As you can see, when the withdrawal amount cannot be fulfilled using the available denominations, the null handler is invoked and displays the corresponding message.
+
 */
