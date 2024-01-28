@@ -125,3 +125,13 @@ class Email {
         return content.contains("spam");
     }
 }
+
+/*
+
+java -cp /tmp/GHj3OG0was Main
+
+This is a sales-related email: Buy our product!
+
+This is a general inquiry: I have a question.
+
+*/
