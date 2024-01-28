@@ -99,3 +99,11 @@ class Main {
         atm.withdrawAmount(6500);
     }
 }
+
+/*
+
+java -cp /tmp/cDGn3NkkEY Main
+
+Withdrawal Request: 6500Dispensing 6 x 1000Dispensing 1 x 500
+
+*/
