@@ -89,3 +89,5 @@ public static void main(String args[]){
     first.processOrder();
   }
  }
+
+/*Whenever we need to add new payment method we don't need to change the paymentService class instead of this we can create another class that implements the paymentStartegy, and write the implementation of the processPayment() method, and we can easily access the method in the paymentService class*/
