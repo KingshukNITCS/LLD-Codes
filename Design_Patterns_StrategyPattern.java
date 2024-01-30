@@ -15,6 +15,7 @@ Suppose you are building a file compression utility that can perform various typ
 Use Case 3: Payment Strategies
 
 Let's consider an e-commerce application where multiple payment strategies such as credit card, PayPal, and digital wallets like Google Pay or Apple Pay are implemented. A PaymentStrategy interface can be created with a pay(amount) method. Different payment methods can be separate classes implementing this interface. In the checkout process, the client can choose the appropriate payment strategy without any change in the client code. This will also allow for easy addition of new payment strategies in the future.
+Violating OCP & SRP
 
 import java.io.*;
 
