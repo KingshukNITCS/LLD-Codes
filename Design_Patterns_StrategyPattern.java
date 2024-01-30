@@ -39,3 +39,53 @@ class Payment {
 In order to make the above code optimal, we will use the Startegy Design pattern, Let's understand the Startegy Design pattern in the above example. 
 
 */
+
+interface PaymentStartegy {
+
+    public void processPayment();
+}
+
+class PaymentByCard implements PaymentStartegy {
+
+    public void processPayment()
+    {
+
+        System.out.println("Payment is done by Card");
+    }
+}
+
+class PaymentByUPI implements PaymentStartegy {
+
+    public void processPayment()
+    {
+
+        System.out.println("Payment is done by UPI");
+    }
+}
+
+class paymentService {
+
+    PaymentStartegy paymentStartegy;
+
+    paymentService(PaymentStartegy paymentStartegy)
+    {
+
+        this.paymentStartegy = paymentStartegy;
+    }
+
+    public void processOrder()
+    {
+
+        this.paymentStartegy.processPayment();
+    }
+  
+ static void main(String args[]){
+   
+    
+    paymentService first=new paymentService(new PaymentByUPI());
+    
+    paymentService second=new paymentService(new PaymentByCard());
+    
+    first.processOrder();
+  }
+ }
