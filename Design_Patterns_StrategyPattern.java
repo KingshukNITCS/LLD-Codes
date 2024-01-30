@@ -80,7 +80,7 @@ class paymentService {
         this.paymentStartegy.processPayment();
     }
   
-public static void main(String args[]){
+   public static void main(String args[]){
  
     paymentService first=new paymentService(new PaymentByUPI());
     
