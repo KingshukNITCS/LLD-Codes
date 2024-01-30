@@ -80,6 +80,17 @@ class ObserverExample {
 }
 /*
 ```
+java -cp /tmp/ku8DVvwKl2 ObserverExample
+
+Updated state: 10
+
+Updated state: 10
+
+Updated state: 20
+
+Updated state: 20
+
+
 
 In this example, we have a `Subject` interface that provides methods for registering, removing, and notifying observers. The `Observer` interface defines the `update` method that is called when the subject's state changes.
 
