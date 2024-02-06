@@ -109,6 +109,10 @@ class Reservation {
     }
 
     // Getters for Reservation attributes
+    public String getId()
+    {
+        return id;
+    }
 }
 
 // Abstract class representing an Account (Customer & Staff)
