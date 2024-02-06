@@ -1,4 +1,7 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.UUID;
 
 // Class representing an Airport
 class Airport {
@@ -59,6 +62,10 @@ class Flight {
         for (int i = 0; i < numOfSeats; i++) {
             seats.add(new Seat(i + 1));
         }
+    }
+
+    public List<Seat> getSeats() {
+        return seats;
     }
 
     // Other getters and methods related to Flight class
@@ -179,6 +186,6 @@ class AirlineTicketBookingSystem {
 
         // Display bookings
         System.out.println("Customer Booking: " + reservation1.getId());
-        //System.out.println("Staff Booking: "
-  }
+        System.out.println("Staff Booking: " + reservation2.getId());
+    }
 }
