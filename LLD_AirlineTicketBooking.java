@@ -1,3 +1,5 @@
+/* LLD design of airline ticket booking system with simple java program having classes airport, aircraft, flight, seat, reservation, account (customer&staff) */
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
